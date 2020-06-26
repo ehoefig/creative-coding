@@ -50,12 +50,12 @@ class ParticleSystem {
                 let p1 = p.clone()
                 p1.velocity.rotate(-PI/4);
                 p1.rotation = -0.01
-                p1.life = p.life + 40
+                p1.life = p.life + 30
                 spawned.push(p1)
                 let p2 = p.clone()
                 p1.velocity.rotate(PI/4);
                 p2.rotation = 0.01
-                p2.life = p.life + 40
+                p2.life = p.life + 30
                 spawned.push(p2);
             }
         });
