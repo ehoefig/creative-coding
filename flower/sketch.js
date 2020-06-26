@@ -10,7 +10,7 @@ function setup() {
 	system = new ParticleSystem();
 	p = system.spawn(width/2, height, 500)
 	p.velocity.set(0, -1)
-	background(0, 0, 100)
+	//background(0, 0, 100)
 }
 
 function tick() {
