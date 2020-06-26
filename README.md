@@ -1,7 +1,6 @@
-# Experiments in p5.js
-Some experiments with generative design. Feel free to re-use.
-
-
+# Creative Coding
+Some experiments with generative design and creative coding.
+Should be mostly in p5.js. Feel free to re-use.
 
 All files provided through this github repository are by [Edzard Höfig](https://edzard.net) and licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0), unless otherwise noted.![cc] ![by]
 
