@@ -1,28 +1,56 @@
 class Particle {
 
-    constructor(x, y, life) {
-        this.location = createVector(x, y)
+    constructor(system) {
+        this.system = system
+        this.location = createVector()
         this.velocity = createVector()
-        this.rotation = 0;
-        this.life = life
+        this.spin = 0
+        this.spin_acceleration = 0
+        this.life = 0
+        this.incarnation = 0
+        system.born(this)
     }
 
     update() {
         this.location.add(this.velocity)
-        this.velocity.rotate(this.rotation);
-        return --this.life > 0
+        this.spin += this.spin_acceleration;
+        this.velocity.rotate(this.spin);
+
+        this.life -= (this.incarnation + 1) * 0.3;
+
+        if (this.life < 0) system.die(this);
+
+        // Spawned?
+        if (this.incarnation < 2) {
+            const spawnTime = Math.random() < this.life / 30000.0
+            if (spawnTime) {
+                
+                let p1 = this.clone()
+                p1.spin_acceleration = (p1.incarnation / p1.life) * -0.01
+                this.system.born(p1)
+
+                let p2 = this.clone()
+                p2.spin_acceleration = (p2.incarnation / p2.life) * 0.01
+                this.system.born(p2)
+            }
+        }
     }
 
     show() {
-        strokeWeight(5)
-        stroke(255 - this.life / 2)
+        strokeWeight(2)
+        stroke(255 - this.incarnation * 10)
+        //stroke(255 - this.life / 2)
         point(this.location.x, this.location.y)
     }
 
     clone() {
-        let p = new Particle(this.location.x, this.location.y, this.life)
-        p.velocity = this.velocity.copy()
-        p.rotation = this.rotation
+        let p = new Particle(system)
+        p.location.set(this.location.x, this.location.y)
+        p.velocity.set(this.velocity.x, this.velocity.y)
+        p.spin = this.spin
+        p.spin_acceleration = this.spin_acceleration
+        p.life = this.life
+        p.incarnation = this.incarnation + 1
         return p;
     }
 
@@ -34,36 +62,27 @@ class ParticleSystem {
         this.particles = new Set();
     }
 
-    spawn(x = 0, y = 0, life = 500) {
-        let particle = new Particle(x, y, life)
+    born(particle) {
         this.particles.add(particle)
+    }
+
+    die(particle) {
+        this.particles.delete(particle);
+    }
+
+    spawn(x = 0, y = 0, life = 500) {
+        let particle = new Particle(this)
+        particle.location.set(x, y);
+        particle.life = life
+
         return particle;
     }
 
     update() {
-        let dead = []
-        let spawned = []
-        this.particles.forEach(function(p) {
-            if (!p.update()) dead.push(p)
-            let spawnTime = Math.random() < 0.005
-            if (spawnTime) {
-                let p1 = p.clone()
-                p1.velocity.rotate(-PI/4);
-                p1.rotation = -0.01
-                p1.life = p.life + 30
-                spawned.push(p1)
-                let p2 = p.clone()
-                p1.velocity.rotate(PI/4);
-                p2.rotation = 0.01
-                p2.life = p.life + 30
-                spawned.push(p2);
-            }
-        });
-        dead.forEach(d => this.particles.delete(d))
-        spawned.forEach(s => this.particles.add(s))
+        this.particles.forEach(p => p.update())
     }
 
     show() {
-        this.particles.forEach(p => p.show());
+        this.particles.forEach(p => p.show())
     }
 }
