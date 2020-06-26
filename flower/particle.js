@@ -16,7 +16,7 @@ class Particle {
         this.spin += this.spin_acceleration;
         this.velocity.rotate(this.spin);
 
-        this.life -= (this.incarnation + 1) * 0.3;
+        this.life -= (this.incarnation + 1) * 0.3 + 0.2;
 
         if (this.life < 0) system.die(this);
 
@@ -26,19 +26,19 @@ class Particle {
             if (spawnTime) {
                 
                 let p1 = this.clone()
-                p1.spin_acceleration = (p1.incarnation / p1.life) * -0.01
+                p1.spin_acceleration = (p1.incarnation / p1.life) * -0.02
                 this.system.born(p1)
 
                 let p2 = this.clone()
-                p2.spin_acceleration = (p2.incarnation / p2.life) * 0.01
+                p2.spin_acceleration = (p2.incarnation / p2.life) * 0.02
                 this.system.born(p2)
             }
         }
     }
 
     show() {
-        strokeWeight(2)
-        stroke(255 - this.incarnation * 10)
+        strokeWeight(1)
+        stroke(0)
         //stroke(255 - this.life / 2)
         point(this.location.x, this.location.y)
     }

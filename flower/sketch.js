@@ -11,6 +11,7 @@ function setup() {
 	p = system.spawn(width/2, height, 500)
 	p.velocity.set(0, -1)
 	//background(0, 0, 100)
+	
 }
 
 function tick() {
