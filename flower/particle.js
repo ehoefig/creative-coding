@@ -10,7 +10,7 @@ class Particle {
         this.life = 0
         this.incarnation = 0
         system.born(this)
-    }s
+    }
 
     update() {
         this.location.add(this.velocity)
@@ -35,8 +35,6 @@ class Particle {
                 p2.life += 50 * random(-1, 1)
             }
         }
-
-        this.formerLocation.set(this.location)
     }
 
     show() {
@@ -46,7 +44,8 @@ class Particle {
         const ppos = this.formerLocation
         const pos = this.location
         line(ppos.x, ppos.y, pos.x, pos.y)
-        //point(this.location.x, this.location.y)
+
+        this.formerLocation.set(this.location)
     }
 
     clone() {
@@ -81,6 +80,7 @@ class ParticleSystem {
     spawn(x = 0, y = 0, life = 500) {
         let particle = new Particle(this)
         particle.location.set(x, y);
+        particle.formerLocation.set(x, y);
         particle.life = life
 
         return particle;
