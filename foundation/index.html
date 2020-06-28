@@ -9,19 +9,14 @@
 		//<![CDATA[
 
 		let sketchName = "Foundation"
-		const sketchID = "$Id$"
+		const sketchVersion = "0.1"
 
 		var ticks
 
 		function setup() {
 			createCanvas(windowWidth, windowHeight)
 			console.group(`Information`)
-			console.info(`Sketch: ${sketchName}`)
-			if (sketchID.length === 4) {
-				console.info(`Id: <no ID (done by git commit)>`)
-			} else {
-				console.info(sketchID)
-			}
+			console.info(`Sketch: ${sketchName} v${sketchVersion}`)
 			console.info(`Canvas size is ${width}x${height}`)
 			console.info(`Pixel density: ${pixelDensity()}`)
 			console.groupEnd()
@@ -46,7 +41,7 @@
 		function keyTyped() {
 			switch (key) {
 				case 's':
-					saveCanvas(sketchName + '_' + sketchID, 'png')
+					saveCanvas(sketchName + '_' + sketchVersion, 'png')
 					break
 			}
 		}
