@@ -5,49 +5,7 @@
 	<meta charset="UTF-8">
 	<title>intro</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-	<script type="text/javascript">
-		//<![CDATA[
-
-		let sketchName = "Foundation"
-		const sketchVersion = "0.1"
-
-		var ticks
-
-		function setup() {
-			createCanvas(windowWidth, windowHeight)
-			console.group(`Information`)
-			console.info(`Sketch: ${sketchName} v${sketchVersion}`)
-			console.info(`Canvas size is ${width}x${height}`)
-			console.info(`Pixel density: ${pixelDensity()}`)
-			console.groupEnd()
-
-			ticks = 0
-
-			if (typeof init === "function") init()
-		}
-
-		function windowResized() {
-			resizeCanvas(windowWidth, windowHeight);
-			console.info(`Canvas size is ${width}x${height}`)
-			if (typeof resize === "function") resize()
-		}
-
-		function draw() {
-			++ticks
-			if (typeof update === "function") update()
-			if (typeof paint === "function") paint()
-		}
-
-		function keyTyped() {
-			switch (key) {
-				case 's':
-					saveCanvas(sketchName + '_' + sketchVersion, 'png')
-					break
-			}
-		}
-
-		//]]>
-	</script>
+	<script src="foundation.js"></script>
 	<script src="sketch.js"></script>
 	<style>
 		body {

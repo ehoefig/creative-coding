@@ -1,3 +1,6 @@
+const SKETCH_NAME = "Foundation"
+const SKETCH_VERSION = "0.1"
+
 function init() {
 	// One time init	
 }
