@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>intro</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+	<script type="text/javascript">
+		//<![CDATA[
+
+		let sketchName = "Foundation"
+		const sketchID = "$Id$"
+
+		var ticks
+
+		function setup() {
+			createCanvas(windowWidth, windowHeight)
+			console.group(`Information`)
+			console.info(`Sketch: ${sketchName}`)
+			if (sketchID.length === 4) {
+				console.info(`Id: <no ID assigned yet (done by git commit)>`)
+			} else {
+				console.info(sketchID)
+			}
+			console.info(`Canvas size is ${width}x${height}`)
+			console.info(`Pixel density: ${pixelDensity()}`)
+			console.groupEnd()
+
+			ticks = 0
+
+			if (typeof init === "function") init()
+		}
+
+		function windowResized() {
+			resizeCanvas(windowWidth, windowHeight);
+			console.info(`Canvas size is ${width}x${height}`)
+			if (typeof resize === "function") resize()
+		}
+
+		function draw() {
+			++ticks
+			if (typeof update === "function") update()
+			if (typeof paint === "function") paint()
+		}
+
+		function keyTyped() {
+			switch (key) {
+				case 's':
+					saveCanvas(sketchName + '_' + sketchID, 'png')
+					break
+			}
+		}
+
+		//]]>
+	</script>
+	<script src="sketch.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: 'white';
+		}
+	</style>
+</head>
+
+<body>
+</body>
+
+</html>
