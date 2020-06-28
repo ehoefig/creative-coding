@@ -1,6 +1,7 @@
+const SKETCH_NAME = "flower"
+const SKETCH_VERSION = "0.3"
 
 var system
-
 
 function spawnVine(angle) {
 	// Pick a place on the screen border
@@ -30,36 +31,21 @@ function spawnVine(angle) {
 	p.velocity.set(direction)
 }
 
-function setup() {
-	createCanvas(windowWidth, windowHeight)
-	print(`Canvas size is ${width}x${height}`)
-
+function init() {
 	system = new ParticleSystem();
 	let angle = random(-PI/4, PI/4)
 	spawnVine(angle)
 	spawnVine(angle)
-	spawnVine(angle)
-	
+	spawnVine(angle)	
 }
 
-function tick() {
+function update() {
 	system.update()
 }
 
 // Called once per frame
-function draw() {
-
-	tick()
-
-	
+function paint() {
 	//clear()
 	noFill()
-	
 	system.show();
-
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight)
-  print(`Canvas size is ${width}x${height}`)
 }

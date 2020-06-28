@@ -1,6 +1,19 @@
 /*
  * Foundation code for sketches
  * Some custom hooks, vars and key handlers
+ * 
+ * Hooks are called:
+ * init() - Once before start
+ * resize() - Whenever canvas is resized
+ * update() - Each frame before paint()
+ * paint() - Each frame
+ * 
+ * Vars:
+ * SKETCH_NAME - name of the current sketch
+ * SKETCH_VERSION - current sketch's version
+ * 
+ * Keys:
+ * s - save a PNG of the on-screen canvas
  */
 
 var ticks
