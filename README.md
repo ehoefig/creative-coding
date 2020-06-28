@@ -5,6 +5,7 @@ Should be mostly in p5.js. Feel free to re-use.
 ## Experiments
  - *Bootstrap*: Boilerplate code for starting p5.js projects
  - *Flower*: growing vines
+ - *Foundation*: Standard starting points for sketches (custom index.html)
 
 ---------
 
