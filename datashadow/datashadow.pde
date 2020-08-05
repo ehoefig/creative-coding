@@ -1,6 +1,3 @@
-import nervoussystem.obj.*;
-
-boolean record;
 /* 
  * Processing sketch.
  * Create a grid of blocks from a CSV file of statistical data.
@@ -9,6 +6,11 @@ boolean record;
  * Created by Edzard Höfig
  * Licensed under CC BY 4.0
  */
+
+
+import nervoussystem.obj.*;  // OBJ exporter library by Jesse Louis-Rosenberg
+
+boolean record;
 
 static String outname = "diagram.obj";
 
