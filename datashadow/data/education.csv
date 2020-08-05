@@ -1,0 +1,24 @@
+geschlecht,alter,ohne,fsa,ausbildung,bachelor,master,phd
+M,15 bis unter 20 Jahre,2043,0,43,0,0,0
+M,20 bis unter 25 Jahre,1405,47,729,95,26,0
+M,25 bis unter 30 Jahre,680,171,1193,293,296,5
+M,30 bis unter 35 Jahre,499,215,1228,220,495,35
+M,35 bis unter 40 Jahre,439,220,1265,111,551,55
+M,40 bis unter 45 Jahre,403,204,1239,48,497,55
+M,45 bis unter 50 Jahre,421,288,1516,23,535,53
+M,50 bis unter 55 Jahre,434,389,1904,19,652,68
+M,55 bis unter 60 Jahre,409,380,1798,14,584,59
+M,60 bis unter 65 Jahre,327,281,1464,9,514,47
+M,65 Jahre und mehr,876,962,4296,15,1394,163
+,,,,,,,
+W,15 bis unter 20 Jahre,1890,7,37,0,0,0
+W,20 bis unter 25 Jahre,1259,122,545,121,33,0
+W,25 bis unter 30 Jahre,545,242,970,304,368,8
+W,30 bis unter 35 Jahre,402,274,1095,198,563,39
+W,35 bis unter 40 Jahre,428,242,1148,89,579,43
+W,40 bis unter 45 Jahre,428,241,1179,46,496,35
+W,45 bis unter 50 Jahre,471,290,1539,28,486,34
+W,50 bis unter 55 Jahre,534,388,1981,17,497,35
+W,55 bis unter 60 Jahre,553,361,1834,13,456,29
+W,60 bis unter 65 Jahre,500,300,1548,6,391,24
+W,65 Jahre und mehr,3027,644,5049,8,722,48
