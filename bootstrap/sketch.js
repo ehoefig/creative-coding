@@ -1,3 +1,11 @@
+/* 
+ * p5.js sketch.
+ * Boilerplate p5.js code
+ *
+ * Created by Edzard Höfig
+ * Licensed under CC BY 4.0
+ */
+
 // One-time initialisation at program start
 function setup() {
 	createCanvas(windowWidth, windowHeight)

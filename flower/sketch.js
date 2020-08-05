@@ -1,3 +1,11 @@
+/* 
+ * p5.js sketch based on foundation.
+ * Draws growing vines.
+ *
+ * Created by Edzard Höfig
+ * Licensed under CC BY 4.0
+ */
+
 const SKETCH_NAME = "flower"
 const SKETCH_VERSION = "0.3"
 

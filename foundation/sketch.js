@@ -1,3 +1,10 @@
+/* 
+ * p5.js sketch template.
+ *
+ * Created by Edzard Höfig
+ * Licensed under CC BY 4.0
+ */
+
 const SKETCH_NAME = "Foundation"
 const SKETCH_VERSION = "0.1"
 

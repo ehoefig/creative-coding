@@ -1,11 +1,12 @@
 # Creative Coding
 Some experiments with generative design and creative coding.
-Should be mostly in p5.js. Feel free to re-use.
+Should be mostly in [p5.js](https://p5js.org) and [Processing](https://processing.org). Feel free to re-use.
 
 ## Experiments
  - *Bootstrap*: Boilerplate code for starting p5.js projects
- - *Flower*: growing vines
- - *Foundation*: Standard starting points for sketches (custom index.html)
+ - *Flower*: growing vines (p5.js)
+ - *Foundation*: Standard starting points for p5.js sketches (custom index.html)
+ - *Datashadow*: shadow landscape from statistical data (Processing, Blender)
 
 ---------
 

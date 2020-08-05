@@ -14,6 +14,10 @@
  * 
  * Keys:
  * s - save a PNG of the on-screen canvas
+ *
+ * --
+ * Created by Edzard Höfig
+ * Licensed under CC BY 4.0
  */
 
 var ticks
