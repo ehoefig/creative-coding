@@ -4,9 +4,9 @@ Should be mostly in [p5.js](https://p5js.org) and [Processing](https://processin
 
 ## Experiments
  - *bootstrap*: Boilerplate code for starting p5.js projects
- - *flower*: growing vines (p5.js)
+ - *flower*: Growing vines (p5.js)
  - *foundation*: Standard starting points for p5.js sketches (custom index.html)
- - *datashadow*: shadow landscape from statistical data (Processing, Blender)
+ - *datashadow*: Shadow landscape from statistical data (Processing, Blender)
  - *gauges*: Generating circular gauges (p5.js)
 ---------
 
