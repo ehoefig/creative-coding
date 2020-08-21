@@ -6,8 +6,22 @@
  * Licensed under CC BY 4.0
  */
 
+ /*
+  * TODO
+  * - Tick thinkness should scale
+  * - Thickness of attachment point should scale
+  * - slight offset problem with foreground svg
+  * 
+  */
+
 const SKETCH_NAME = "gauge"
-const SKETCH_VERSION = "0.1"
+const SKETCH_VERSION = "0.11"
+
+var foregroundElement
+var radius
+
+function preload() {
+}
 
 function calculateRadius() {
 	let s = min(width, height)
@@ -16,14 +30,31 @@ function calculateRadius() {
 	return s
 }
 
+// Angle: 0 is 12 o'clock
+/*
+function vecFromPolar(angle, length) {
+	return createVector(
+		length * sin(angle),
+		length * -cos(angle)
+	)
+}
+*/
+
 function init() {
+	radius = calculateRadius()
 	console.group(`Gauge specific Information`)
-	console.log(`radius is ${calculateRadius()}x`)
+	console.log(`radius is ${radius}`)
 	console.groupEnd()
+
+	foregroundElement = createImg('data/foreground.svg', 'front gfx')
+	foregroundElement.size(radius*2, radius*2)
+	foregroundElement.center()
 }
 
 function resize() {
 	radius = calculateRadius()
+	foregroundElement.size(radius*2, radius*2)
+	foregroundElement.center()
 }
 
 function drawArc(radius, from, to, colour, weight) {
@@ -63,23 +94,68 @@ function drawTicks(radius, count, length, offset, from, to, colour, weight) {
 
 // Called once per frame
 function paint() {
-	background('black')
-		
+	
 	push()
-	translate(width/2, height/2)
+	translate(width / 2, height / 2)
+	
+	paintBackground()
+	paintScale()
+	paintLabels()
+	paintPointer()
+	//paintForeground()
+	
+	pop()	
+}
 
-	// Mark center
-	stroke('grey')
-	strokeWeight(5)
-	point(0, 0)
+function paintBackground() {
+	background('#202050')
+	
+	stroke('#404040')
+	strokeWeight(2)
+	fill('black')
+	circle(0, 0, 2 * calculateRadius())
+}
 
-	// Draw scale
-	let radius = calculateRadius()
-	let from = 5/4 * PI
-	let to = 3/4 * PI
+function paintScale() {
+	let radius = calculateRadius() * 0.9
+	let from = 5 / 4 * PI
+	let to = 3 / 4 * PI
 	drawArc(radius, from, to, 'white', 2)
 	drawArc(radius - (radius / 10), from, to, 'white', 1)
 	drawTicks(radius, 46, radius / 10, 0, from, to, 'white', 1)
 	drawTicks(radius, 10, radius / 5, 0, from, to, 'white', 6)
+}
+
+function paintLabels() {
+
+}
+
+function paintPointer() {
+	
+	push()
+	rotate(5 / 4 * PI)
+
+	// Attachment
+	noStroke();
+	fill('grey')
+	circle(0, 0, 50);
+
+	// Pointer
+	stroke('red')
+	strokeWeight(10)
+
+	// Front end
+	line(0, 0, 0, radius * -0.85)
+
+	// Rear end
+	line(0, 0, 0, radius * 0.2)
+
 	pop()
 }
+
+/*
+function paintForeground() {
+	const diameter = calculateRadius() * 2
+	image(img, -diameter/2, -diameter/2, diameter, diameter);
+}
+*/
