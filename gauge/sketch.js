@@ -8,7 +8,6 @@
 
  /*
   * TODO
-  * - Use SVG library to compose SVG directly with canvas (e.g. for saving)
   * - Tick thinkness should scale
   * - Thickness of attachment point should scale
   * - slight offset problem with foreground svg
@@ -18,7 +17,6 @@
 const SKETCH_NAME = "gauge"
 const SKETCH_VERSION = "0.11"
 
-var foregroundElement
 var radius
 
 function preload() {
@@ -46,16 +44,10 @@ function init() {
 	console.group(`Gauge specific Information`)
 	console.log(`radius is ${radius}`)
 	console.groupEnd()
-
-	foregroundElement = createImg('data/foreground.svg', 'front gfx')
-	foregroundElement.size(radius*2, radius*2)
-	foregroundElement.center()
 }
 
 function resize() {
 	radius = calculateRadius()
-	foregroundElement.size(radius*2, radius*2)
-	foregroundElement.center()
 }
 
 function drawArc(radius, from, to, colour, weight) {
@@ -103,9 +95,11 @@ function paint() {
 	paintScale()
 	paintLabels()
 	paintPointer()
-	//paintForeground()
+	paintForeground()	
 	
 	pop()	
+
+
 }
 
 function paintBackground() {
@@ -154,9 +148,8 @@ function paintPointer() {
 	pop()
 }
 
-/*
 function paintForeground() {
-	const diameter = calculateRadius() * 2
-	image(img, -diameter/2, -diameter/2, diameter, diameter);
+	let img = document.getElementById('foreground')
+	let context = canvas.getContext('2d')
+	context.drawImage(img, -radius, -radius, 2*radius, 2*radius)
 }
-*/
