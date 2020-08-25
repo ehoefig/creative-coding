@@ -8,6 +8,7 @@
 
  /*
   * TODO
+  * - Use SVG library to compose SVG directly with canvas (e.g. for saving)
   * - Tick thinkness should scale
   * - Thickness of attachment point should scale
   * - slight offset problem with foreground svg
@@ -117,7 +118,7 @@ function paintBackground() {
 }
 
 function paintScale() {
-	let radius = calculateRadius() * 0.9
+	let radius = calculateRadius() * 0.8
 	let from = 5 / 4 * PI
 	let to = 3 / 4 * PI
 	drawArc(radius, from, to, 'white', 2)
