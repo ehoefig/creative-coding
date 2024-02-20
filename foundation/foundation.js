@@ -20,19 +20,34 @@
  * Licensed under CC BY 4.0
  */
 
-var ticks
+//var ticks
+
+// FRom p5.js reference
+function drawArrow(base, vec, myColor) {
+    push();
+    stroke(myColor);
+    strokeWeight(3);
+    fill(myColor);
+    translate(base.x, base.y);
+    line(0, 0, vec.x, vec.y);
+    rotate(vec.heading());
+    let arrowSize = 7;
+    translate(vec.mag() - arrowSize, 0);
+    triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+    pop();
+  }
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
     console.group(`Information`)
-    const name = typeof SKETCH_NAME === "undefined"? "<SKETCH_NAME not set>" : SKETCH_NAME
-    const version = typeof SKETCH_VERSION === "undefined"? "<SKETCH_VERSION not set>" : "v" + SKETCH_VERSION
+    const name = typeof SKETCH_NAME === "undefined" ? "<SKETCH_NAME not set>" : SKETCH_NAME
+    const version = typeof SKETCH_VERSION === "undefined" ? "<SKETCH_VERSION not set>" : "v" + SKETCH_VERSION
     console.info(`Sketch: ${name} ${version}`)
     console.info(`Canvas size is ${width}x${height}`)
     console.info(`Pixel density: ${pixelDensity()}`)
     console.groupEnd()
 
-    ticks = 0
+    //ticks = 0
 
     if (typeof init === "function") init()
 }
@@ -44,7 +59,7 @@ function windowResized() {
 }
 
 function draw() {
-    ++ticks
+    //++ticks
     if (typeof update === "function") update()
     if (typeof paint === "function") paint()
 }
@@ -52,8 +67,8 @@ function draw() {
 function keyTyped() {
     switch (key) {
         case 's':
-            const name = typeof SKETCH_NAME === "undefined"? "<SKETCH_NAME not set>" : SKETCH_NAME
-            const version = typeof SKETCH_VERSION === "undefined"? "<SKETCH_VERSION not set>" : "v" + SKETCH_VERSION
+            const name = typeof SKETCH_NAME === "undefined" ? "<SKETCH_NAME not set>" : SKETCH_NAME
+            const version = typeof SKETCH_VERSION === "undefined" ? "<SKETCH_VERSION not set>" : "v" + SKETCH_VERSION
             saveCanvas(`${name}_${version}`, 'png')
             break
     }
